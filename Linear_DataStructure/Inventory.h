@@ -11,6 +11,9 @@ public:
 	C_INVENTORY() = default;
 	~C_INVENTORY() = default;
 
+	C_INVENTORY(const C_INVENTORY&) = delete;
+	const C_INVENTORY& operator=(const C_INVENTORY&) = delete;
+
 	void Init(const char* fileName = "asset.csv");
 	void Destroy();
 
