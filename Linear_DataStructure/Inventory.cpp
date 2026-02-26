@@ -79,6 +79,11 @@ void C_INVENTORY::Init(const char* fileName)
 
 		token = strtok_s(nullptr, "\n", &context);
 	}
+
+	delete[] data;
+	data = nullptr;
+
+	fclose(file);
 }
 
 void C_INVENTORY::Destroy()
