@@ -12,7 +12,7 @@ public:
 	~C_ITEM() = default;
 
 	// C_ITEM을 사용하기 전 Init으로 값 할당
-	void Init(int id, std::string name, std::string type, int cost, int rarity);
+	void Init(int id, const std::string& name, const std::string& type, int cost, int rarity);
 
 public:
 

@@ -4,6 +4,12 @@
 
 int main()
 {
+	CONSOLE_CURSOR_INFO info{};
+	info.dwSize = 1;
+	info.bVisible = FALSE;
+
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
+
 	// inventory ¼±¾ð
 	C_INVENTORY inventory{};
 	inventory.Init();
@@ -22,7 +28,7 @@ int main()
 	currentTime = time.QuadPart;
 	previousTime = currentTime;
 
-	float targetFrameRate{30.0f};
+	float targetFrameRate{60.0f};
 	float oneFrameTime = 1.0f / targetFrameRate;
 
 	while (true)
@@ -37,6 +43,8 @@ int main()
 		if (deltaTime >= oneFrameTime)
 		{
 			system("cls");
+			std::cout << "Press ESC to escape.\n";
+			std::cout << "=============================\n";
 			inventory.ShowItem();
 
 			previousTime = currentTime;
@@ -48,6 +56,12 @@ int main()
 			break;
 		}
 	}
+
+	info.dwSize = 1;
+	info.bVisible = TRUE;
+
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
+
 
 	inventory.Destroy();
 }
